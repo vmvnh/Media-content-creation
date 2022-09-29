@@ -4,9 +4,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.yaroslav.application.dto.UserRequest;
+import org.yaroslav.application.services.UserService;
 
 /**
  * Контроллер для работы с пользователями.
@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @Tags(@Tag(name = "Пользователи"))
 public class UserController {
+	UserService service;
 	/**
 	 * Создаёт нового пользователя.
 	 */
-	@GetMapping
+	@PostMapping
 	@Operation(summary = "Создать нового пользователя")
-	public String create() {
-		return "";
+	public String create(@RequestBody UserRequest userRequest) {
+		service.create(userRequest);
+		return "Пользователь создан!";
 	}
 }
