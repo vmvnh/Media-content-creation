@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.hibernate.validator.constraints.UniqueElements;
 import org.yaroslav.domain.entities.User;
 
 /**
@@ -20,8 +19,7 @@ public class UserModel {
 	@Id
 	@GeneratedValue
 	@Column(name = "id", unique = true)
-	@UniqueElements
-	private @Getter long userId;
+	private @Getter Long userId;
 
 	/**
 	 * Имя пользователя.
@@ -72,6 +70,6 @@ public class UserModel {
 			String image,
 			User.Role role
 	) {
-		this(0, name, email, password, image, role);
+		this(0L, name, email, password, image, role);
 	}
 }
