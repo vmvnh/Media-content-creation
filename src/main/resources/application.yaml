@@ -17,3 +17,7 @@ spring:
       max-file-size: 50MB
     upload:
       path: /src/main/resources/webapp
+  security:
+    user:
+      name: user
+      password: 1234
