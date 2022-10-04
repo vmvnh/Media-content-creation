@@ -1,0 +1,2 @@
+insert into users (id, name, email, password, image, role) values ('1', 'admin', 'admin@mail.ru', '1234', 'image', 'ADMIN');
+insert into users (id, name, email, password, image, role) values ('2', 'user', 'user@mail.ru', '1234', 'image', 'MANAGER');

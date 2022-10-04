@@ -11,13 +11,13 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: create-drop
+    defer-datasource-initialization: true
   servlet:
     multipart:
       enabled: true
       max-file-size: 50MB
     upload:
       path: /src/main/resources/webapp
-  security:
-    user:
-      name: user
-      password: 1234
+  sql:
+    init:
+      mode: always
