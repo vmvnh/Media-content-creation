@@ -1,7 +1,13 @@
 package org.yaroslav.infrastructure.models;
 
-import javax.persistence.*;
-
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
+import javax.persistence.Enumerated;
+import javax.persistence.EnumType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.yaroslav.domain.entities.User;
@@ -17,7 +23,7 @@ public class UserModel {
 	 * Идентификатор пользователя.
 	 */
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true)
 	private @Getter Long userId;
 
