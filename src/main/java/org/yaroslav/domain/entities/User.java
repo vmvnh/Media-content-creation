@@ -4,22 +4,55 @@ import lombok.Getter;
 
 /**
  * Пользователь.
- *
- * @param id Идентификатор пользователя.
- * @param name Имя пользователя.
- * @param email Email пользователя.
- * @param password Пароль пользователя.
- * @param image Аватар пользователя.
- * @param role Роль пользователя.
  */
-public record User(
-		long id,
-		String name,
-		String email,
-		String password,
-		String image,
-		Role role
-) {
+public class User {
+	/**
+	 * Идентификатор пользователя.
+	 */
+  @Getter long id;
+
+	/**
+	 * Имя пользователя.
+	 */
+  @Getter String name;
+
+	/**
+	 * Email пользователя.
+	 */
+  @Getter String email;
+
+	/**
+	 * Пароль пользователя.
+	 */
+  @Getter String password;
+
+	/**
+	 * Изображение пользователя.
+	 */
+  @Getter String image;
+
+	/**
+	 * Роль пользователя.
+	 */
+  @Getter User.Role role;
+
+	public User(
+			long id,
+			String name,
+			String email,
+			String password,
+			String image,
+			User.Role role
+	) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.image = image;
+		this.role = role;
+	}
+	
+	public User() {}
 
 	/**
 	 * Роль пользователя.
