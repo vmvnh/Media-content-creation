@@ -1,7 +1,7 @@
 package org.yaroslav.domain.repositories;
 
-import org.yaroslav.domain.entities.User;
 import java.util.Collection;
+import org.yaroslav.domain.entities.User;
 
 public interface UserRepository {
 	/**
@@ -14,13 +14,7 @@ public interface UserRepository {
 	 * @param role Роль пользователя.
 	 * @return Созданный пользователь.
 	 */
-	User create(
-			String name,
-			String email,
-			String password,
-			String image,
-			User.Role role
-	);
+  void create(String name, String email, String password, String image, User.Role role);
 
 	/**
 	 * Обновляет данные пользователя.
