@@ -18,14 +18,14 @@ import org.yaroslav.domain.entities.User;
 @Entity
 @Table(name = "users")
 @AllArgsConstructor
-public class UserModel {
+public class UserModel extends User {
 	/**
 	 * Идентификатор пользователя.
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", unique = true)
-	private @Getter Long userId;
+	@Column(unique = true)
+	private @Getter long id;
 
 	/**
 	 * Имя пользователя.
@@ -58,7 +58,18 @@ public class UserModel {
 	@Column(nullable = false)
 	private @Getter User.Role role;
 
-	protected UserModel() {}
+	public static User toEntity(UserModel user) {
+		return new User(
+				user.id,
+				user.name,
+				user.email,
+				user.password,
+				user.image,
+				user.role
+		);
+	}
+
+	public UserModel() {}
 
 	/**
 	 * Создаёт экземпляр класса {@link UserModel}.
