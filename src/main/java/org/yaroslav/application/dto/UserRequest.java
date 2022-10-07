@@ -40,10 +40,10 @@ public class UserRequest {
 	 * @param user Сущность пользователя.
 	 */
 	public UserRequest(User user) {
-		this.name = user.name();
-		this.email = user.email();
-		this.password = user.password();
-		this.image = user.image();
-		this.role = user.role();
+		this.name = user.getName();
+		this.email = user.getEmail();
+		this.password = user.getPassword();
+		this.image = user.getImage();
+		this.role = user.getRole();
 	}
 }
