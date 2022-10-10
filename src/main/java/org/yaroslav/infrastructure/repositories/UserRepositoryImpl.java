@@ -6,7 +6,9 @@ import org.springframework.stereotype.Repository;
 import org.yaroslav.domain.entities.User;
 import org.yaroslav.domain.repositories.UserRepository;
 import org.yaroslav.infrastructure.models.UserModel;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Реализация репозитория пользователей.
@@ -17,15 +19,14 @@ public class UserRepositoryImpl implements UserRepository {
 	private Users users;
 
 	@Override
-	public User create(
+	public void create(
 			String name,
 			String email,
 			String password,
 			String image,
 			User.Role role) {
 		var user = new UserModel(name, email, password, image, role);
-		this.users.save(user);
-		return null;
+		users.save(user);
 	}
 
 	@Override
@@ -40,17 +41,38 @@ public class UserRepositoryImpl implements UserRepository {
 
 	@Override
 	public User get(long id) {
-		return null;
+		var userModel = users.getById(id);
+		return new User(
+				userModel.getId(),
+				userModel.getName(),
+				userModel.getEmail(),
+				userModel.getPassword(),
+				userModel.getImage(),
+				userModel.getRole()
+		);
 	}
 
 	@Override
 	public User get(String email) {
-		return null;
+		var userModel = users.findOneByEmail(email);
+		return new User(
+				userModel.getId(),
+				userModel.getName(),
+				userModel.getEmail(),
+				userModel.getPassword(),
+				userModel.getImage(),
+				userModel.getRole()
+		);
 	}
 
 	@Override
 	public Collection<User> getAll() {
-		return null;
+		var userModel = users.findAll();
+		List<User> userList = new ArrayList<>();
+		for (UserModel user : userModel) {
+			userList.add(UserModel.toEntity(user));
+		}
+		return userList;
 	}
 
 	@Override
@@ -64,6 +86,6 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	public interface Users extends JpaRepository<UserModel, Long> {
-
+		User findOneByEmail(String email);
 	}
 }
