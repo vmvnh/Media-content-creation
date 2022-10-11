@@ -9,6 +9,7 @@ import org.yaroslav.infrastructure.models.UserModel;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Реализация репозитория пользователей.
@@ -36,7 +37,7 @@ public class UserRepositoryImpl implements UserRepository {
 
 	@Override
 	public void delete(long id) {
-
+		users.deleteById(id);
 	}
 
 	@Override
@@ -53,16 +54,8 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public User get(String email) {
-		var userModel = users.findOneByEmail(email);
-		return new User(
-				userModel.getId(),
-				userModel.getName(),
-				userModel.getEmail(),
-				userModel.getPassword(),
-				userModel.getImage(),
-				userModel.getRole()
-		);
+	public Optional<User> get(String email) {
+		return users.getByEmail(email);
 	}
 
 	@Override
@@ -85,7 +78,8 @@ public class UserRepositoryImpl implements UserRepository {
 		return false;
 	}
 
+	@Repository
 	public interface Users extends JpaRepository<UserModel, Long> {
-		User findOneByEmail(String email);
+		Optional<User> getByEmail(String email);
 	}
 }
