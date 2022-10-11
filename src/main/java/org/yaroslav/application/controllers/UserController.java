@@ -67,7 +67,7 @@ public class UserController {
 	 */
 	@DeleteMapping(path = "/{id}")
 	@Operation(summary = "Удалить пользователя по идентификатору")
-	public void create(@PathVariable long id) {
-		System.out.println("");
+	public void delete(@PathVariable long id) {
+		service.deleteUserById(id);
 	}
 }

@@ -21,6 +21,7 @@ public final class UserService {
 	private GetUserById getUserById;
 	private UpdateUserById updateUserById;
 	private DeleteUserById deleteUserById;
+	private GetUserByEmail getUserByEmail;
 
 	/**
 	 * Получает список пользователей.
@@ -59,5 +60,9 @@ public final class UserService {
 	public UserResponse getUserById(long id) {
 		User user = getUserById.getUserById(id);
 		return new UserResponse(user);
+	}
+
+	public void deleteUserById(long id) {
+		deleteUserById.deleteUserById(id);
 	}
 }
