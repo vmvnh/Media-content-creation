@@ -1,6 +1,7 @@
 package org.yaroslav.domain.repositories;
 
 import java.util.Collection;
+import java.util.Optional;
 import org.yaroslav.domain.entities.User;
 
 public interface UserRepository {
@@ -57,7 +58,7 @@ public interface UserRepository {
 	 * @param email Электронная почта пользователя.
 	 * @return Пользователь с запрошенной электронной почтой.
 	 */
-	User get(String email);
+	Optional<User> get(String email);
 
 	/**
 	 * Получает список всех пользователей.
