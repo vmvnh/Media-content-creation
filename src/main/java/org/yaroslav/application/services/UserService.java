@@ -65,4 +65,15 @@ public final class UserService {
 	public void deleteUserById(long id) {
 		deleteUserById.deleteUserById(id);
 	}
+
+	public void updateUserById(long id, UserRequest userRequest) {
+		updateUserById.updateUser(
+				id,
+				userRequest.name,
+				userRequest.email,
+				userRequest.password,
+				userRequest.image,
+				userRequest.role
+		);
+	}
 }
