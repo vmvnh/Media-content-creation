@@ -19,8 +19,8 @@ public class UpdateUserById {
       User.Role role
   ) {
     var userExists = repository.get(id);
-    if (userExists.) {
-      repository.update(name, email, password, image, role);
+    if (userExists.isPresent()) {
+      repository.update(id, name, email, password, image, role);
     }
   }
 }

@@ -59,7 +59,7 @@ public class UserController {
 	@PutMapping(path = "/{id}")
 	@Operation(summary = "Изменить пользователя по идентификатору")
 	public void update(@PathVariable long id, @RequestBody UserRequest userRequest) {
-		System.out.println("");
+		service.updateUserById(id, userRequest);
 	}
 
 	/**
