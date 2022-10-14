@@ -31,8 +31,9 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public User update(long id, String name, String email, String password, String image, User.Role role) {
-		return null;
+	public void update(String name, String email, String password, String image, User.Role role) {
+		var user = new UserModel(name, email, password, image, role);
+		users.save(user);
 	}
 
 	@Override
@@ -41,7 +42,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public User get(long id) {
+	public Optional<User> get(long id) {
 		var userModel = users.getById(id);
 		return new User(
 				userModel.getId(),
@@ -80,6 +81,7 @@ public class UserRepositoryImpl implements UserRepository {
 
 	@Repository
 	public interface Users extends JpaRepository<UserModel, Long> {
+		Optional<User> getById(long id);
 		Optional<User> getByEmail(String email);
 	}
 }

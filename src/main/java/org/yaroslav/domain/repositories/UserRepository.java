@@ -28,8 +28,7 @@ public interface UserRepository {
 	 * @param role Роль пользователя.
 	 * @return Обновлённый пользователь.
 	 */
-	User update(
-			long id,
+	void update(
 			String name,
 			String email,
 			String password,
