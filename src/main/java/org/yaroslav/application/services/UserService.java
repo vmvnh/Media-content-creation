@@ -58,8 +58,8 @@ public final class UserService {
 	 * @return Пользователь.
 	 */
 	public UserResponse getUserById(long id) {
-		User user = getUserById.getUserById(id);
-		return new UserResponse(user);
+		var user = getUserById.getUserById(id);
+		return new UserResponse(user.get());
 	}
 
 	public void deleteUserById(long id) {
