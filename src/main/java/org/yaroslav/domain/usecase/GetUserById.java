@@ -1,8 +1,11 @@
 package org.yaroslav.domain.usecase;
 
 import lombok.AllArgsConstructor;
+import org.springframework.expression.spel.support.ReflectivePropertyAccessor;
 import org.yaroslav.domain.entities.User;
 import org.yaroslav.domain.repositories.UserRepository;
+
+import java.util.Optional;
 
 /**
  * Сценарий получения пользователя по идентификатору.
@@ -10,8 +13,7 @@ import org.yaroslav.domain.repositories.UserRepository;
 @AllArgsConstructor
 public class GetUserById {
   private UserRepository repository;
-  public User getUserById(long id) {
-    var user = repository.get(id);
-    return user;
+  public Optional<User> getUserById(long id) {
+    return repository.get(id);
   }
 }
