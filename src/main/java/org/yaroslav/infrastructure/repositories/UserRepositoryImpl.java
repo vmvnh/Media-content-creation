@@ -31,8 +31,8 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public void update(String name, String email, String password, String image, User.Role role) {
-		var user = new UserModel(name, email, password, image, role);
+	public void update(long id, String name, String email, String password, String image, User.Role role) {
+		var user = new UserModel(id, name, email, password, image, role);
 		users.save(user);
 	}
 
@@ -43,15 +43,7 @@ public class UserRepositoryImpl implements UserRepository {
 
 	@Override
 	public Optional<User> get(long id) {
-		var userModel = users.getById(id);
-		return new User(
-				userModel.getId(),
-				userModel.getName(),
-				userModel.getEmail(),
-				userModel.getPassword(),
-				userModel.getImage(),
-				userModel.getRole()
-		);
+		return users.getById(id);
 	}
 
 	@Override
