@@ -29,6 +29,7 @@ public interface UserRepository {
 	 * @return Обновлённый пользователь.
 	 */
 	void update(
+			long id,
 			String name,
 			String email,
 			String password,
@@ -49,7 +50,7 @@ public interface UserRepository {
 	 * @param id Идентификатор пользователя.
 	 * @return Пользователь с запрошенным идентификатором.
 	 */
-	User get(long id);
+	Optional<User> get(long id);
 
 	/**
 	 * Получает пользователя по его электронной почте.
