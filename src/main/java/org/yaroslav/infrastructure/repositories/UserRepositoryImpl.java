@@ -63,7 +63,7 @@ public class UserRepositoryImpl implements UserRepository {
 
 	@Override
 	public boolean exists(long id) {
-		return false;
+		return users.existsById(id);
 	}
 
 	@Override
@@ -74,6 +74,9 @@ public class UserRepositoryImpl implements UserRepository {
 	@Repository
 	public interface Users extends JpaRepository<UserModel, Long> {
 		Optional<User> getById(long id);
+
 		Optional<User> getByEmail(String email);
+
+		boolean existsById(long id);
 	}
 }
